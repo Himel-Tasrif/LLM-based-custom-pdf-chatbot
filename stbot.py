@@ -13,9 +13,9 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.schema import Document
 
 # Replicate API token
-os.environ['REPLICATE_API_TOKEN'] = "r8_dDk8Ef9F7ol8RjEWouic7grDVxOb2eS2V2dSQ"
+os.environ['REPLICATE_API_TOKEN'] = "Your REPLICATE_API_TOKEN"
 # Pinecone API key
-os.environ['PINECONE_API_KEY'] = '79eaff63-569c-42e8-b1d0-7506cc33a8f0'
+os.environ['PINECONE_API_KEY'] = 'Your PINECONE_API_KEY'
 
 # Initialize Pinecone
 api_key = os.environ['PINECONE_API_KEY']
