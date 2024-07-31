@@ -3,7 +3,7 @@ import sys
 import streamlit as st
 from io import BytesIO
 from uuid import uuid4
-import fitz  # PyMuPDF
+import PyPDF2  # PyPDF2 for PDF text extraction
 from pinecone import Pinecone, ServerlessSpec
 from langchain_community.llms import Replicate
 from langchain_community.vectorstores import Pinecone as LangchainPinecone
@@ -13,9 +13,9 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.schema import Document
 
 # Replicate API token
-os.environ['REPLICATE_API_TOKEN'] = "use Your REPLICATE_API_TOKEN"
+os.environ['REPLICATE_API_TOKEN'] = "r8_dDk8Ef9F7ol8RjEWouic7grDVxOb2eS2V2dSQ"
 # Pinecone API key
-os.environ['PINECONE_API_KEY'] = 'Use Your PINECONE_API_KEY'
+os.environ['PINECONE_API_KEY'] = '79eaff63-569c-42e8-b1d0-7506cc33a8f0'
 
 # Initialize Pinecone
 api_key = os.environ['PINECONE_API_KEY']
@@ -34,31 +34,26 @@ if index_name not in pc.list_indexes().names():
         )
     )
 
-def extract_text_with_pymupdf(pdf_path):
-    with fitz.open(pdf_path) as doc:
-        text = ""
-        for page in doc:
-            text += page.get_text()
+def extract_text_with_pypdf2(file):
+    reader = PyPDF2.PdfReader(file)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
     return text
 
 # Streamlit interface
-st.title("PDF Chatbot")
+st.title("PDF Chatbot by *** Tasrif Nur Himel ***")
 
 uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
 if uploaded_file is not None:
-    # Create a unique temporary file path for the uploaded file
-    temp_file_path = f"temp_{uuid4()}.pdf"
-    with open(temp_file_path, "wb") as f:
-        f.write(uploaded_file.getbuffer())
-
-    # Extract text from the PDF using PyMuPDF
-    extracted_text = extract_text_with_pymupdf(temp_file_path)
+    # Extract text from the PDF using PyPDF2
+    extracted_text = extract_text_with_pypdf2(uploaded_file)
 
     # Convert the extracted text into Document format for Langchain
     documents = [Document(page_content=extracted_text)]
 
     # Split the documents into smaller chunks for processing
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)  # Adjust chunk size if needed
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)  # Adjust chunk size if needed
     texts = text_splitter.split_documents(documents)
 
     # Use HuggingFace embeddings for transforming text into numerical vectors
