@@ -1,7 +1,10 @@
 # LLM Based Custom PDF Chatbot
 
-This repository contains the code for a PDF chatbot application that leverages advanced language models and vector databases to provide intelligent conversational responses based on the content of uploaded PDF documents.
-
+<figure style="text-align: center;">
+  <img src="https://media.licdn.com/dms/image/D5612AQHWdL-lVswI-Q/article-cover_image-shrink_600_2000/0/1722599085907?e=1727913600&v=beta&t=2RDSWjO6RJEynFUvAq-F8flaCLZkLqM4SuRUaUlvL2c" alt="Llama-PDF-Chatbot" width="300" height="200">
+  <figcaption>This repository contains the code for a PDF chatbot application that leverages advanced large language models and vector databases to provide intelligent conversational responses based on the content of uploaded PDF documents. For Large Language Model i am using Llama here.
+</figcaption>
+</figure>
 Features:
 1. PDF Text Extraction: Uses PyMuPDF or any Text Extraction Library to extract text from uploaded PDF files.
 
