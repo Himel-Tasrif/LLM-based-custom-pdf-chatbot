@@ -5,6 +5,9 @@
   <figcaption>This repository contains the code for a PDF chatbot application that leverages advanced large language models and vector databases to provide intelligent conversational responses based on the content of uploaded PDF documents. For Large Language Model i am using Llama here.
 </figcaption>
 </figure>
+
+
+
 Features:
 1. PDF Text Extraction: Uses PyMuPDF or any Text Extraction Library to extract text from uploaded PDF files.
 
@@ -17,3 +20,29 @@ Features:
 5. Conversational AI: Employs a Replicate Llama2 model to generate context-aware responses to user queries.
 
 6. Streamlit Interface: Provides an easy-to-use web interface for uploading PDFs and interacting with the chatbot.
+
+
+## First of all, we need to create accounts:
+### Pinecone Account:
+
+Pinecone is a vector database designed to manage, store, and query high-dimensional vectors efficiently. It is particularly useful in machine learning applications for tasks such as similarity search, natural language processing, and recommendation systems. In our project, Pinecone is used to store and retrieve the vectorized text data from the PDF, enabling fast and accurate query responses.
+
+### Setup:
+
+Visit Pinecone’s website: Go to Pinecone.
+Sign up: Click on the sign-up button and fill out the required information to create an account.
+Access API Keys: Once logged in, go to the left side navigation menu and click on “API Keys”.
+Copy API Key: Copy the API key displayed on the screen. We will use this key later in the code.
+Create an Index: Go to the “Indexes” tab and create a new index.
+Name the index as you prefer.
+Set the dimensions to 768, which corresponds to the dimensionality of the Hugging Face embeddings used in the project.
+
+### Replicate Account:
+
+Replicate is a platform that provides access to machine learning models via a simple API. It allows developers to integrate powerful models into their applications without needing extensive machine learning expertise. In this project, Replicate is used to access the Llama AI model, which powers the natural language understanding capabilities of the chatbot, enabling it to comprehend and respond to user queries effectively.
+
+### Setup:
+
+Visit Replicate’s website: Go to Replicate.
+Sign up: Create an account by providing the necessary information.
+Get the API token: After logging in, go to the API section to get your Replicate API token. API Key: https://replicate.com/account/api-tokens
